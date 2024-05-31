@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Parcels</title>
+    <script src="jquery-3.4.0.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="dacha-form">
+        <form>
+            <h2> Содовый кооператив "Дача"</h2>
+            <label>Участок:</label>
+            <input type="text" name="Кадастровый №" value="аа:вв:сс">
+            <label>Площадь:</label>
+            <input type="text" name="area" value="600">
+            <hr>
+            <button id="save-parcel">Сохранить</button>
+        </form>
+    </div>
+    <h1>Перечень участков: (<span th:text="${parcelsCount}">0</span>)</h1>
+    <button id="show-add-dacha-form">Добавить участок</button>
+    <br><br>
+    <div id="parcel-list">
+        <div th:each="parcel : ${parcel}">
+            <a href="#" class="parcel-link" th:attr="data-id=${parcel.id}" th:text="${parcel.numcadastr}"></a>
+        </div>
+    </div>
+    <p th:text="${someParameter}"></p>
+</body>
+</html>
