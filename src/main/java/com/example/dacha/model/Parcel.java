@@ -1,22 +1,25 @@
-package main.model;
+package com.example.dacha.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@Table(name = "`parcel`")
+//@NoArgsConstructor
+
 @Data
-
-
 public class Parcel
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     private String numcadastr;
+
+    private int area;
+
+    private String view;
+
+    private String note;
 
 }

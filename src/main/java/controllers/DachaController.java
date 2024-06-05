@@ -1,17 +1,13 @@
 package controllers;
 
-import main.model.Parcel;
-import main.model.ParcelRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.example.dacha.model.Parcel;
+import com.example.dacha.model.ParcelRepository;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class DachaController {
@@ -36,9 +32,9 @@ public class DachaController {
     }
 
     @PostMapping("/parcels/")
-    public int add(Parcel parcel) {
+    public void add(Parcel parcel) {
         Parcel newParcel = parcelRepository.save(parcel);
-        return newParcel.getId();
+        //return newParcel.getId();
     }
 /*
     @GetMapping("/books/{id}")
