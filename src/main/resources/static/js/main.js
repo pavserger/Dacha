@@ -1,5 +1,5 @@
 $(function(){
-alert ("my js 2");
+
     const appendparcel = function(data){
         var parcelCode = '<a href="#" class="parcel-link" data-id="' +
             data.id + '">' + data.numcadastr + '</a><br>';
