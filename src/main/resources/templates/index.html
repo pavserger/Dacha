@@ -45,14 +45,13 @@
 		$(document).ready(function() {
 			$.getJSON('http://localhost:8080/parcels', function(json) {
 				var tr=[];
-				alert("json");
-				alert(json);
 
 				for (var i = 0; i < json.length; i++) {
 					tr.push('<tr>');
 					tr.push('<td>' + json[i].id + '</td>');
-					tr.push('<td>' + json[i].name + '</td>');
-					tr.push('<td><button class=\'edit\'>Edit</button>&nbsp;&nbsp;<button class=\'delete\' id=' + json[i].id + '>Delete</button></td>');
+					tr.push('<td>' + json[i].numcadastr + '</td>');
+					tr.push('<td>' +json[i].view+'</td>');
+					tr.push('<td>' +json[i].note+'</td>');
 					tr.push('</tr>');
 				}
 				$('table').append($(tr.join('')));
@@ -61,20 +60,27 @@
 			$(document).delegate('#addNew', 'click', function(event) {
 				event.preventDefault();
 
-				var name = $('#name').val();
+			//-	var name = $('#name').val();
 
 				$.ajax({
 					type: "POST",
 					contentType: "application/json; charset=utf-8",
-					url: "http://localhost:8080/company/save",
-					data: JSON.stringify({'name': name}),
+					url: "http://localhost:8080/parcel/save",
+					data: JSON.stringify({
+					"id":33,
+					"numcadastr": numcadastr.value,
+					"area": area.value,
+			    	"view":view.value,
+					"note":note.value
+					}),
 					cache: false,
 					success: function(result) {
-						$("#msg").html( "<span style='color: green'>Company added successfully</span>" );
+						$("#msg").html( "<span style='color: green'>Участок успешно добавлен</span>" );
 						window.setTimeout(function(){location.reload()},1000)
 					},
 					error: function(err) {
-						$("#msg").html( "<span style='color: red'>Name is required</span>" );
+					 //   alert (data);
+						$("#msg").html( "<span style='color: red'>Ошибка</span>" );
 					}
 				});
 			});
@@ -145,23 +151,37 @@
 
 <h2>Список участков</h2>
 
-<p><a class='btn' href="#add" rel="modal:open">Add New Company</a></p>
+<p><a class='btn' href="#add" rel="modal:open">Add New Cadastry</a></p>
 
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
         <th>Id</th>
         <th>Cadastr</th>
         <th>Area</th>
+        <th>View</th>
+        <th>Заметки</th>
     </tr>
 </table>
 
 <form id="add" action="#" class="add_form modal" style="display:none;">
     <div id='msg'/>
-    <h3>Add a New Company</h3>
+    <h3>Новый участок</h3>
     <p>
-        <label>Name</label>
-        <input type="text" id="name" name="name">
+        <label>Кадастровый номер</label>
+        <input type="text" id="numcadastr" name="castrate">
     </p>
+    <p>
+        <label>Площадь</label>
+        <input type="number" id="area" name="area">
+    </p>
+    <p>
+        <label>Вид</label>
+        <input type="text" id="view" name="view">
+    </p>    <p>
+    <label>Примечание</label>
+    <input type="text" id="note" name="note">
+</p>
+
     <p>
         <input type="submit" id="addNew" value="Submit">
     </p>

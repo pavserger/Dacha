@@ -21,8 +21,8 @@ public class CrudService {
         return crudRepository.findById(id).get();
     }
 
-    public void saveOrUpdateCompany(Parcel company) {
-        crudRepository.save(company);
+    public void saveOrUpdateCompany(Parcel parcel) {
+        crudRepository.save(parcel);
     }
 
     public void deleteCompany(Long id) {
