@@ -50,6 +50,7 @@
 					tr.push('<tr>');
 					tr.push('<td>' + json[i].id + '</td>');
 					tr.push('<td>' + json[i].numcadastr + '</td>');
+					tr.push('<td>' + json[i].area + '</td>');
 					tr.push('<td>' +json[i].view+'</td>');
 					tr.push('<td>' +json[i].note+'</td>');
 					tr.push('</tr>');
@@ -177,10 +178,11 @@
     <p>
         <label>Вид</label>
         <input type="text" id="view" name="view">
-    </p>    <p>
+    </p>
+    <p>
     <label>Примечание</label>
     <input type="text" id="note" name="note">
-</p>
+    </p>
 
     <p>
         <input type="submit" id="addNew" value="Submit">
