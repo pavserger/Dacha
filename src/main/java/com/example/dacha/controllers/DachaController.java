@@ -1,12 +1,15 @@
-package controllers;
+package com.example.dacha.controllers;
 
+import com.example.dacha.CrudService;
 import com.example.dacha.model.Parcel;
 import com.example.dacha.model.ParcelRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,7 +23,13 @@ public class DachaController {
         this.parcelRepository = parcelRepository;
     }
 
-    @GetMapping("/parcels/")
+ //   @GetMapping("/parcels/")
+/*
+    @GetMapping("/companyList")
+    public ResponseEntity<List<Company>> getCompanyList() {
+        return new ResponseEntity<List<Company>>(crudService.getCompanyList(), HttpStatus.OK);
+    }
+
     public List<Parcel> list() {
         Iterable<Parcel> parcelIterable = parcelRepository.findAll();
 
@@ -30,6 +39,15 @@ public class DachaController {
         }
         return parcels;
     }
+*/
+
+    @Autowired
+    private CrudService crudService;
+    @GetMapping("/parcels")
+    public ResponseEntity<List<Parcel>> getCompanyList() {
+        return new ResponseEntity<List<Parcel>>(crudService.getCompanyList(), HttpStatus.OK);
+    }
+
 
     @PostMapping("/parcels/")
     public void add(Parcel parcel) {
