@@ -6,10 +6,7 @@ import com.example.dacha.model.ParcelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,19 +45,6 @@ public class DachaController {
     public ResponseEntity<List<Parcel>> getCompanyList() {
         return new ResponseEntity<List<Parcel>>(crudService.getCompanyList(), HttpStatus.OK);
     }
-/*
-    @PostMapping("/company/save")
-    public ResponseEntity<Void> saveOrUpdateCompany(@RequestBody Company company) {
-        crudService.saveOrUpdateCompany(company);
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }
-
-    @PostMapping("/parcel/save")
-    public void add(Parcel parcel) {
-        Parcel newParcel = parcelRepository.save(parcel);
-        //return newParcel.getId();
-    }
- */
 @PostMapping("/parcel/save")
 public ResponseEntity<Void> saveOrUpdateCompany(@RequestBody Parcel parcel) {
     crudService.saveOrUpdateCompany(parcel);
@@ -69,17 +53,9 @@ public ResponseEntity<Void> saveOrUpdateCompany(@RequestBody Parcel parcel) {
 
 
 
-/*
-    @GetMapping("/books/{id}")
-    public ResponseEntity<?> get(@PathVariable int id) {
-        Optional<Parcel> optionalBook = parcelRepository.findById(id);
-
-        if (!optionalBook.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-
-        return new ResponseEntity<>(optionalBook.get(), HttpStatus.OK);
+    @DeleteMapping("/parcel/delete/{id}")
+    public ResponseEntity<Void> deleteParcel(@PathVariable Long id) {
+        crudService.deleteParcel(id);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
-
- */
 }

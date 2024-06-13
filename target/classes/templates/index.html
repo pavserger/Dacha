@@ -86,13 +86,13 @@
 				});
 			});
 
-			$(document).delegate('.delete', 'click', function() {
+			$(document).delegate('delnumber', 'click', function() {
 				if (confirm('Do you really want to delete record?')) {
 					var id = $(this).attr('id');
 					var parent = $(this).parent().parent();
 					$.ajax({
 						type: "DELETE",
-						url: "http://localhost:8080/company/delete/" + id,
+						url: "http://localhost:8080/parcel/delete/" + id,
 						cache: false,
 						success: function() {
 							parent.fadeOut('slow', function() {
@@ -154,6 +154,8 @@
 
 <p><a class='btn' href="#add" rel="modal:open">Add New Cadastry</a></p>
 
+<p><a class='btn' href="http://localhost:8080/roles"> Add New Rolles</a></p>
+
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
         <th>Id</th>
@@ -163,6 +165,18 @@
         <th>Заметки</th>
     </tr>
 </table>
+
+<label>
+--------------------------------------------------------------
+</label>
+
+
+<label>
+    Удалить участок с номером :
+    <input id="delnumber" type="number" value="77" />
+</label>
+
+
 
 <form id="add" action="#" class="add_form modal" style="display:none;">
     <div id='msg'/>
@@ -185,9 +199,10 @@
     </p>
 
     <p>
-        <input type="submit" id="addNew" value="Submit">
+        <input type="submit" id="addNew" value="Ok">
     </p>
 </form>
+
 
 </body>
 </html>

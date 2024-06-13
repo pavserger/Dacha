@@ -40,6 +40,9 @@ public class CrudService {
     }
     public void saveOrUpdateRoles(Rolles rolles) { rollesRepository.save(rolles);
     }
+    public void deleteParcel(Long id) {
+        crudRepository.deleteById(id);
+    }
 
 
     public void deleteCompany(Long id) {
