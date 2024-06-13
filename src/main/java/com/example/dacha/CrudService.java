@@ -16,13 +16,17 @@ public class CrudService {
     private ParcelRepository crudRepository;
     private RollesRepository rollesRepository;
 
+    public CrudService(ParcelRepository crudRepository, RollesRepository rollesRepository) {
+        this.crudRepository = crudRepository;
+        this.rollesRepository = rollesRepository;
+    }
 
     public List<Parcel> getCompanyList() {
         return crudRepository.findAll();
     }
 
 
-    public List<Rolles> getRolesList() {
+    public List<Rolles> getRollesList() {
         return rollesRepository.findAll();
     }
 

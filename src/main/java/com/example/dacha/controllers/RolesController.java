@@ -23,12 +23,17 @@ public class RolesController {
     public RolesController (RollesRepository rollesRepository) {
         this.rollesRepository = rollesRepository;
     }
-    @GetMapping("/roleslist")
+    @GetMapping("/rolesList")
     public ResponseEntity<List<Rolles>> getRolesList() {
-        return new ResponseEntity<List<Rolles>>(crudService.getRolesList(), HttpStatus.OK);
+        //System.out.println("hihi");
+        var listb = crudService.getRollesList();
+        System.out.println("hih");
+        System.out.println(listb);
+
+        return new ResponseEntity<List<Rolles>>(crudService.getRollesList(), HttpStatus.OK);
     }
 
-    @PostMapping("/save")
+    @PostMapping("roles/save")
     public ResponseEntity<Void> saveOrUpdateCompany(@RequestBody Rolles roles) {
         crudService.saveOrUpdateRoles(roles);
         return new ResponseEntity<Void>(HttpStatus.OK);

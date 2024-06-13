@@ -50,7 +50,6 @@
 					tr.push('<tr>');
 					tr.push('<td>' + json[i].idrole + '</td>');
 					tr.push('<td>' + json[i].name + '</td>');
-
 					tr.push('</tr>');
 				}
 				$('table').append($(tr.join('')));
@@ -59,17 +58,17 @@
 			$(document).delegate('#addNew', 'click', function(event) {
 				event.preventDefault();
 
-			  	var name = $('#name').val();
+			  	var name = $('#nameRolle').val();
 
-			  	alert ()
+			  	alert (name)
 
 				$.ajax({
 					type: "POST",
 					contentType: "application/json; charset=utf-8",
 					url: "http://localhost:8080/roles/save",
 					data: JSON.stringify({
-					"id":33,
-					"name": name.value,
+					"idrole":33,
+					"name": $('#nameRolle').val()
 					}),
 					cache: false,
 					success: function(result) {
@@ -166,7 +165,7 @@
     <h3>Новая роль</h3>
     <p>
         <label>Наименование</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="nameRolle" value="name">
     </p>
 
     <p>
