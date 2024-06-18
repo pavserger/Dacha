@@ -98,14 +98,10 @@
 						url: "http://localhost:8080/parcel/delete/" + delnumber.value,
 						cache: false,
 						success: function(result) {
-						//	parent.fadeOut('slow', function() {
-						//		$(this).remove();
-						//	});
-						//	location.reload(true)
-
-						$("#msg").html( "<span style='color: green'>Участок удален</span>" );
-						window.setTimeout(function(){location.reload()},1000)
-
+							parent.fadeOut('slow', function() {
+								$(this).remove();
+							});
+							location.reload(true)
 						},
 						error: function(err) {
 							$('#err').html('<span style=\'color:red; font-weight: bold; font-size: 30px;\'>Error deleting record').fadeIn().fadeOut(4000, function() {
@@ -163,7 +159,7 @@
 <p><a class='btn' href="#del" rel="modal:open">Delete Cadastry</a></p>
 
 
-<p><a class='btn' href="http://localhost:8080/owner">Новый собственник</a></p>
+<p><a class='btn' href="http://localhost:8080/owner"> Add New Owner</a></p>
 
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
@@ -181,7 +177,7 @@
 <label>
     <p>
     Удалить участок с номером :
-    <input id="delnumber" type="number" value="0" />
+    <input id="delnumber" type="number" value="77" />
     </p>
     <p>
         <input type="submit" id="delnum" value="Ok">

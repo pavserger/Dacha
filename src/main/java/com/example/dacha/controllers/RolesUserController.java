@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+//@Controller
 public class RolesUserController {
 
-
+/*
     @RequestMapping("/owner")
     public String roles() {
         return "owner";
     }
 
 
-
+*/
 }

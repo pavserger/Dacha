@@ -43,16 +43,18 @@
 	</style>
     <script type="text/javascript">
 		$(document).ready(function() {
-			$.getJSON('http://localhost:8080/parcels', function(json) {
+			$.getJSON('http://localhost:8080/ownersList', function(json) {
 				var tr=[];
 
 				for (var i = 0; i < json.length; i++) {
 					tr.push('<tr>');
-					tr.push('<td>' + json[i].id + '</td>');
-					tr.push('<td>' + json[i].numcadastr + '</td>');
-					tr.push('<td>' + json[i].area + '</td>');
-					tr.push('<td>' +json[i].view+'</td>');
-					tr.push('<td>' +json[i].note+'</td>');
+					tr.push('<td>' + json[i].numparcel + '</td>');
+					tr.push('<td>' + json[i].family + '</td>');
+					tr.push('<td>' + json[i].name + '</td>');
+					tr.push('<td>' +json[i].lasName+'</td>');
+					tr.push('<td>' +json[i].phone+'</td>');
+					tr.push('<td>' +json[i].post+'</td>');
+					tr.push('<td>' +json[i].pass+'</td>');
 					tr.push('</tr>');
 				}
 				$('table').append($(tr.join('')));
@@ -61,18 +63,19 @@
 			$(document).delegate('#addNew', 'click', function(event) {
 				event.preventDefault();
 
-			//-	var name = $('#name').val();
 
 				$.ajax({
 					type: "POST",
 					contentType: "application/json; charset=utf-8",
-					url: "http://localhost:8080/parcel/save",
+					url: "http://localhost:8080/owner/save",
 					data: JSON.stringify({
-					"id":33,
-					"numcadastr": numcadastr.value,
-					"area": area.value,
-			    	"view":view.value,
-					"note":note.value
+					"numparcel":numparcel.value,
+					"family": family.value,
+					"name": name2.value,
+			    	"lasName":lasname.value,
+					"phone":phone.value,
+					"post":post.value,
+					"pass":pass.value
 					}),
 					cache: false,
 					success: function(result) {
@@ -95,7 +98,7 @@
 
 					$.ajax({
 						type: "DELETE",
-						url: "http://localhost:8080/parcel/delete/" + delnumber.value,
+						url: "http://localhost:8080/owner/delete" + delnumber.value,
 						cache: false,
 						success: function(result) {
 						//	parent.fadeOut('slow', function() {
@@ -116,62 +119,28 @@
 				}
 			});
 
-			$(document).delegate('.edit', 'click', function() {
-				var parent = $(this).parent().parent();
-
-				var id = parent.children("td:nth-child(1)");
-				var name = parent.children("td:nth-child(2)");
-				var buttons = parent.children("td:nth-child(3)");
-
-				name.html("<input type='text' id='txtName' value='" + name.html() + "'/>");
-				buttons.html("<button id='save'>Save</button>&nbsp;&nbsp;<button class='delete' id='" + id.html() + "'>Delete</button>");
-			});
-
-			$(document).delegate('#save', 'click', function() {
-				var parent = $(this).parent().parent();
-
-				var id = parent.children("td:nth-child(1)");
-				var name = parent.children("td:nth-child(2)");
-				var buttons = parent.children("td:nth-child(3)");
-
-				$.ajax({
-					type: "POST",
-					contentType: "application/json; charset=utf-8",
-					url: "http://localhost:8080/company/save",
-					data: JSON.stringify({'id' : id.html(), 'name' : name.children("input[type=text]").val()}),
-					cache: false,
-					success: function() {
-						name.html(name.children("input[type=text]").val());
-						buttons.html("<button class='edit' id='" + id.html() + "'>Edit</button>&nbsp;&nbsp;<button class='delete' id='" + id.html() + "'>Delete</button>");
-					},
-					error: function() {
-						$('#err').html('<span style=\'color:red; font-weight: bold; font-size: 30px;\'>Error updating record').fadeIn().fadeOut(4000, function() {
-							$(this).remove();
-						});
-					}
-				});
-			});
-
 		});
 	</script>
 </head>
 <body>
 
-<h2>Список участков</h2>
+<h2>Список собсвенников</h2>
 
-<p><a class='btn' href="#add" rel="modal:open">Add New Cadastry</a></p>
-<p><a class='btn' href="#del" rel="modal:open">Delete Cadastry</a></p>
+<p><a class='btn' href="#add" rel="modal:open">Add New Owner</a></p>
+<p><a class='btn' href="#del" rel="modal:open">Delete Owner</a></p>
 
 
-<p><a class='btn' href="http://localhost:8080/roles"> Add New Rolles</a></p>
+<p><a class='btn' href="http://localhost:8080/roles"> Add New Roles</a></p>
 
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
-        <th>Id</th>
-        <th>Cadastr</th>
-        <th>Area</th>
-        <th>View</th>
-        <th>Заметки</th>
+        <th>Участок</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Телефон</th>
+        <th>Почта </th>
+        <th>Пароль</th>
     </tr>
 </table>
 
@@ -180,7 +149,7 @@
 
 <label>
     <p>
-    Удалить участок с номером :
+    Удалить собственника с номером :
     <input id="delnumber" type="number" value="0" />
     </p>
     <p>
@@ -195,23 +164,37 @@
 
 <form id="add" action="#" class="add_form modal" style="display:none;">
     <div id='msg'/>
-    <h3>Новый участок</h3>
+    <h3>Новый собственник</h3>
     <p>
-        <label>Кадастровый номер</label>
-        <input type="text" id="numcadastr" name="castrate">
+        <label>Участок</label>
+        <input type="number" id="numparcel" name=1>
+    </p>
+
+    <p>
+        <label>Фамилия</label>
+        <input type="text" id="family" name="Иванов">
     </p>
     <p>
-        <label>Площадь</label>
-        <input type="number" id="area" name="area">
+        <label>Имя</label>
+        <input type="text" id="name2" name="Иван">
     </p>
     <p>
-        <label>Вид</label>
-        <input type="text" id="view" name="view">
+        <label>Отчество</label>
+        <input type="text" id="lasname" name="Иванович">
     </p>
     <p>
-    <label>Примечание</label>
-    <input type="text" id="note" name="note">
+        <label>Телефон</label>
+        <input type="text" id="phone" name="322-22-33">
     </p>
+    <p>
+        <label>Почта</label>
+        <input type="text" id="post" name="name@yandex.ru">
+    </p>
+    <p>
+        <label>Пароль</label>
+        <input type="text" id="pass" name="????????">
+    </p>
+
 
     <p>
         <input type="submit" id="addNew" value="Ok">

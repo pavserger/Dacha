@@ -52,10 +52,23 @@ public ResponseEntity<Void> saveOrUpdateCompany(@RequestBody Parcel parcel) {
 }
 
 
+/*
+    @DeleteMapping("/parcel/delete/{id}")
+    public ResponseEntity<Long> deleteParcel(@PathVariable Long id) {
+        Long idDel = crudService.deleteParcel(id);
+        return new ResponseEntity <Long> (HttpStatus.OK);
+    }
+
+ */
 
     @DeleteMapping("/parcel/delete/{id}")
-    public ResponseEntity<Void> deleteParcel(@PathVariable Long id) {
-        crudService.deleteParcel(id);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+    public ResponseEntity<Void> deleteParcel(@PathVariable Long id){
+        try {
+        //    Parcel parsel = crudService.findById(id);
+            crudService.deleteParcel(id);
+            return new ResponseEntity<Void>(HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+        }
     }
 }

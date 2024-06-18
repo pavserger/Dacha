@@ -40,7 +40,7 @@ public class CrudService {
     }
 
 
-    public Parcel getCompanyById(Long id) {
+    public Parcel getParcelById(Long id) {
         return crudRepository.findById(id).get();
     }
 
@@ -61,6 +61,9 @@ public class CrudService {
     public void saveOrUpdateOwners(Landowner landowner) { landownerRepository.save(landowner);
     }
     public List<Landowner> getOwnersList() {
+
+        var list = landownerRepository.findAll();
+
         return landownerRepository.findAll();
     }
 

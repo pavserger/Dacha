@@ -14,7 +14,7 @@ import java.util.List;
 public class Parcel
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String numcadastr;
@@ -24,11 +24,11 @@ public class Parcel
     private String view;
 
     private String note;
-
+/*
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "idOwner")
     //     foreignKey = @ForeignKey(name = "FK_lemma_site"))
     //private RoleOwner roleowner;
     public List<Landowner> Owners;
-
+*/
 }
