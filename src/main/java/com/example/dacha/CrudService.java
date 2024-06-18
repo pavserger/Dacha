@@ -2,6 +2,8 @@ package com.example.dacha;
 
 import com.example.dacha.model.Parcel;
 import com.example.dacha.model.ParcelRepository;
+import com.example.dacha.model.RollesAndUsers.Landowner;
+import com.example.dacha.model.RollesAndUsers.LandownerRepository;
 import com.example.dacha.model.RollesAndUsers.Rolles;
 import com.example.dacha.model.RollesAndUsers.RollesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,16 @@ public class CrudService {
     private ParcelRepository crudRepository;
     private RollesRepository rollesRepository;
 
-    public CrudService(ParcelRepository crudRepository, RollesRepository rollesRepository) {
+    private LandownerRepository landownerRepository;
+
+
+    public CrudService(ParcelRepository crudRepository,
+                       RollesRepository rollesRepository,
+                       LandownerRepository landownerRepository) {
         this.crudRepository = crudRepository;
         this.rollesRepository = rollesRepository;
+        this.landownerRepository = landownerRepository;
+
     }
 
     public List<Parcel> getCompanyList() {
@@ -45,8 +54,19 @@ public class CrudService {
     }
 
 
-    public void deleteCompany(Long id) {
-        crudRepository.deleteById(id);
+   // public void deleteCompany(Long id) {
+   //     crudRepository.deleteById(id);
+  //  }
+
+    public void saveOrUpdateOwners(Landowner landowner) { landownerRepository.save(landowner);
     }
+    public List<Landowner> getOwnersList() {
+        return landownerRepository.findAll();
+    }
+
+    public void deleteOwner(Long id) {
+        landownerRepository.deleteById(id);
+    }
+
 
 }

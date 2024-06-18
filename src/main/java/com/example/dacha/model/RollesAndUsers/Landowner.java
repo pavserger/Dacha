@@ -15,7 +15,7 @@ public class Landowner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idOwner;
 
     private String family;
     private String name;

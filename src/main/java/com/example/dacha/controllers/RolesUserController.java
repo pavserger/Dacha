@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class RolesUserController {
 
 
-    @RequestMapping("/roles")
+    @RequestMapping("/owner")
     public String roles() {
-        return "roles";
+        return "owner";
     }
 
 
