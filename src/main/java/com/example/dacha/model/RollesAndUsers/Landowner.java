@@ -17,8 +17,7 @@ public class Landowner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
    // @Column(name = "landowner_id", insertable = false, updatable = false)
-   // private Long landowner_id ;
-
+    private Long id ;
     private Long numparcel;
     private String family;
     private String name;

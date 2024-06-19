@@ -48,6 +48,7 @@
 
 				for (var i = 0; i < json.length; i++) {
 					tr.push('<tr>');
+					tr.push('<td>' + json[i].id + '</td>');
 					tr.push('<td>' + json[i].numparcel + '</td>');
 					tr.push('<td>' + json[i].family + '</td>');
 					tr.push('<td>' + json[i].name + '</td>');
@@ -98,7 +99,7 @@
 
 					$.ajax({
 						type: "DELETE",
-						url: "http://localhost:8080/owner/delete" + delnumber.value,
+						url: "http://localhost:8080/owner/delete/" + delnumber.value,
 						cache: false,
 						success: function(result) {
 						//	parent.fadeOut('slow', function() {
@@ -134,6 +135,7 @@
 
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
+        <th>№№</th>
         <th>Участок</th>
         <th>Фамилия</th>
         <th>Имя</th>

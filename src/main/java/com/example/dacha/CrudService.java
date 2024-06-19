@@ -58,7 +58,9 @@ public class CrudService {
    //     crudRepository.deleteById(id);
   //  }
 
-    public void saveOrUpdateOwners(Landowner landowner) { landownerRepository.save(landowner);
+    public void saveOrUpdateOwners(Landowner landowner) {
+        landownerRepository.save(landowner);
+
     }
     public List<Landowner> getOwnersList() {
 
