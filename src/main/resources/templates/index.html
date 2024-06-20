@@ -58,7 +58,7 @@
 				$('table').append($(tr.join('')));
 			});
 
-			$(document).delegate('#formlogin', 'click', function(event) {
+			$(document).delegate('#idlogin', 'click', function(event) {
 				event.preventDefault();
 				$.ajax({
 					type: "POST",
@@ -166,7 +166,7 @@
             <input id="pass" type="text" value="пароль" />
         </p>
         <p>
-            <input type="submit" id="login" value="Ok">
+            <input type="submit" id="idlogin" value="Ok">
         </p>
 
     </label>

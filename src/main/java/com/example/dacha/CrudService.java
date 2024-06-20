@@ -44,6 +44,12 @@ public class CrudService {
         return crudRepository.findById(id).get();
     }
 
+    public void findOwnerAndParcel(Login login) {
+         List<Landowner> listOwners =
+        landownerRepository.findLandOwnersByPhoneAndPass(login.getPhone(), login.getPass());
+        listOwners.size();
+    }
+
     public void saveOrUpdateCompany(Parcel parcel) {
         crudRepository.save(parcel);
     }

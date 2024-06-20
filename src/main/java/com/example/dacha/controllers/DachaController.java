@@ -54,7 +54,7 @@ public ResponseEntity<Void> saveOrUpdateCompany(@RequestBody Parcel parcel) {
 
     @PostMapping("/parcel/login")
     public ResponseEntity<Void> login(@RequestBody Login login) {
-        //crudService.findOwner(login);
+        crudService.findOwnerAndParcel(login);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
