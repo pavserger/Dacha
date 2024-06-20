@@ -1,6 +1,7 @@
 package com.example.dacha.controllers;
 
 import com.example.dacha.CrudService;
+import com.example.dacha.Login;
 import com.example.dacha.model.Parcel;
 import com.example.dacha.model.ParcelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,13 @@ public ResponseEntity<Void> saveOrUpdateCompany(@RequestBody Parcel parcel) {
     crudService.saveOrUpdateCompany(parcel);
     return new ResponseEntity<Void>(HttpStatus.OK);
 }
+
+    @PostMapping("/parcel/login")
+    public ResponseEntity<Void> login(@RequestBody Login login) {
+        //crudService.findOwner(login);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
 
 
 /*
