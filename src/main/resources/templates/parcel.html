@@ -20,74 +20,38 @@
 }
 
 .leftpane{
-    width: 25%;
-    min-width: 350px;
+    width: 50%;
     height: available;
-    min-height: 400px;
     float: left;
-    background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #eee),color-stop(1, #fff));
+  //  background: #4da6ff;
     border-collapse: collapse;
 }
-
+/*
 .middlepane{
-   width: 50%;
-   min-width: 800px;
+   width: 30%;
+   min-width: 100px;
    height: available;
-   min-height: 650px;
    float: left;
-   background-color: royalblue;
+ //  background-color: royalblue;
    border-collapse: collapse;
 }
-
+*/
 .rightpane{
-    width: available;
+    width:    available;
     height: available;
-    position: relative;
-    margin-left: 75%;
-    background-color: yellow;
+  //  margin-left: 75%;
+    float: left;
+  //  background-color: yellow;
     border-collapse: collapse;
 }
-
 .toppane{
     width: available;
-    height: 100px;
+    height: 30px;
     border-collapse: collapse;
-    background-color: #4da6ff;
+ //   background-color: #4da6ff;
 }
 	
 	
-		.modal p { margin: 1em 0; }
-
-		.add_form.modal {
-		  border-radius: 0;
-		  line-height: 18px;
-		  padding: 0;
-		  font-family: "Lucida Grande", Verdana, sans-serif;
-		}
-
-		.add_form.modal p { padding: 20px 30px; border-bottom: 1px solid #ddd; margin: 0;
-		  background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #eee),color-stop(1, #fff));
-		  overflow: hidden;
-		}
-		.add_form.modal p:last-child { border: none; }
-		.add_form.modal p label { float: left; font-weight: bold; color: #333; font-size: 13px; width: 110px; line-height: 22px; }
-		.add_form.modal p input[type="text"],
-		.add_form.modal p input[type="submit"]		{
-		  font: normal 12px/18px "Lucida Grande", Verdana;
-		  padding: 3px;
-		  border: 1px solid #ddd;
-		  width: 200px;
-		}
-
-		#msg {
-		  margin: 10px;
-		  padding: 30px;
-		  color: #fff;
-		  font-size: 18px;
-		  font-weight: bold;
-		  background: -moz-linear-gradient(top, #2e5764, #1e3d47);
-		  background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #1e3d47),color-stop(1, #2e5764));
-		}
 	</style>
     <script type="text/javascript">
 	</script>
@@ -104,12 +68,65 @@
 }
 <div class="container">
             <div class="toppane">
-			<h2>Список участков</h2>
-			
+		    	<h1>Сведения об участке</h1>
 			</div>
-            <div class="leftpane"><h1>leftpane</h1></div>
-            <div class="middlepane">middlepane</div>
-            <div class="rightpane"><h1>rightpane</h1></div>
+            <div class="leftpane"><h2></h2>
+
+                <table border="1" cellspacing="0" cellpadding="2">
+                    <caption>Ежегодные платежи</caption>
+                    <tr>
+                        <th>№</th>
+                        <th>Дата начисления</th>
+                        <th>Сумма</th>
+                        <th>Дата платежа</th>
+                        <th>Сумма</th>
+                        <th>Заметки</th>
+                    </tr>
+                </table>
+
+                <p>                                                            </p>
+
+                <table border="1" cellspacing="0" cellpadding="2">
+                    <caption>Целевфе платежи</caption>
+                    <tr>
+                        <th>№</th>
+                        <th>Дата начисления</th>
+                        <th>Сумма</th>
+                        <th>Дата платежа</th>
+                        <th>Сумма</th>
+                        <th>Заметки</th>
+                    </tr>
+                </table>
+
+            </div>
+           <div class="rightpane"><h2></h2>
+
+               <table border="1" cellspacing="0" cellpadding="2">
+                   <caption>Платежи за электричество</caption>
+
+                   <tr>
+                       <th>№</th>
+                       <th>Дата начисления</th>
+                       <th>Сумма</th>
+                       <th>Дата платежа</th>
+                       <th>Сумма</th>
+                       <th>Заметки</th>
+                   </tr>
+               </table>
+
+               <p>                                                            </p>
+               <table border="1" cellspacing="0" cellpadding="2">
+                   <caption>Услуги</caption>
+                   <tr>
+                       <th>№</th>
+                       <th>Дата </th>
+                       <th>Услуга</th>
+                       <th>Дата</th>
+                       <th>Результат</th>
+                       <th>Заметки</th>
+                   </tr>
+               </table>
+           </div>
 </div>
 
 
