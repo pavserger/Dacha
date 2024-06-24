@@ -17,11 +17,11 @@ public class AnnualPayment {
     @ManyToOne
     @JoinColumn(name = "parcel_id",nullable=false, updatable = false)
     private Parcel parcel;
-
-    private Date dateewnewpayment;
+    private Date datenewpayment;
     private Double newpayment;
     private Date datepayment;
     private Double payment;
     private String note;
+    private Long lparcel;
 
 }
