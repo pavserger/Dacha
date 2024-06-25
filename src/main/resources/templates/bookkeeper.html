@@ -98,9 +98,9 @@
 					tr.push('<tr>');
 					tr.push('<td>' + json[i].id + '</td>');
 					tr.push('<td>' + json[i].lparcel + '</td>');
-					tr.push('<td>' + json[i].datenewpayment + '</td>');
+					tr.push('<td>' + json[i].datenewpayment.substring(0, 10) + '</td>');
 					tr.push('<td>' + json[i].newpayment + '</td>');
-					tr.push('<td>' +json[i].datepayment+'</td>');
+					tr.push('<td>' +json[i].datepayment.substring(0, 10)+'</td>');
 					tr.push('<td>' +json[i].payment+'</td>');
 					tr.push('<td>' +json[i].note+'</td>');
 					tr.push('</tr>');
@@ -148,7 +148,10 @@
 			</div>
             <div class="leftpane"><h2></h2>
 
-                <table  id = "table1"  border="1" cellspacing="0" cellpadding="2">
+
+
+
+                <table style='font-family:"Courier New", Courier, monospace; font-size:80%' id = "table1"  border="1" cellspacing="0"  cellpadding="2">
                     <caption>Ежегодные платежи</caption>
                     <tr>
                         <th>№</th>
