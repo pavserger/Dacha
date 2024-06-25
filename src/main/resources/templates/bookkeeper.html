@@ -90,18 +90,22 @@
     <script type="text/javascript">
         		$(document).ready(function() {
         					$.getJSON('http://localhost:8080/bookkeeper/list', function(json) {
+
+			//	console.log (json);
 				var tr=[];
 
 				for (var i = 0; i < json.length; i++) {
 					tr.push('<tr>');
 					tr.push('<td>' + json[i].id + '</td>');
-					tr.push('<td>' + json[i].numcadastr + '</td>');
-					tr.push('<td>' + json[i].area + '</td>');
-					tr.push('<td>' +json[i].view+'</td>');
+					tr.push('<td>' + json[i].lparcel + '</td>');
+					tr.push('<td>' + json[i].datenewpayment + '</td>');
+					tr.push('<td>' + json[i].newpayment + '</td>');
+					tr.push('<td>' +json[i].datepayment+'</td>');
+					tr.push('<td>' +json[i].payment+'</td>');
 					tr.push('<td>' +json[i].note+'</td>');
 					tr.push('</tr>');
 				}
-				$('table1').append($(tr.join('')));
+				$('#table1').append($(tr.join('')));
 			});
 
 				$(document).delegate('#addnewbut', 'click', function(event) {
