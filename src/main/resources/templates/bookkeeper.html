@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <style>
 
-    		.modal p { margin: 1em 0; }
+    	.modal p { margin: 1em 0; }
 
 		.add_form.modal {
 		  border-radius: 0;
@@ -43,10 +43,10 @@
 		}
 
 	
-	body{
-    width: available;
-    height: available;
-}
+//	body{
+ //   width: available;
+  //  height: available;
+//}
 
 .container{
     width: available;
@@ -86,11 +86,13 @@
 }
 	
 	
-    </style>
+  </style>
     <script type="text/javascript">
         $(document).ready(function() {
-            $.getJSON('http://localhost:8080/bookkeeper/list', function(json) {
+             //   alert ("hi");
 
+
+            $.getJSON('http://localhost:8080/bookkeeper/list', function(json) {
 				var tr=[];
 
 				for (var i = 0; i < json.length; i++) {
@@ -105,8 +107,7 @@
 					tr.push('</tr>');
 				}
 				$('#table1').append($(tr.join('')));
-			});
-
+			}); //  $.getJSON('http://localhost:8080/bookkeeper/list', function(json)
 
 			$(document).delegate('#addnewbut', 'click', function(event) {
 				event.preventDefault();
@@ -120,7 +121,7 @@
 					"newpayment": sumpay1.value,
 			    	"datepayment":datepayment.value,
 					"payment":sumpay2.value,
-					"note":note.value,
+					"note":note.value
 					}),
 					cache: false,
 					success: function(result) {
@@ -132,31 +133,18 @@
 						$("#msg").html( "<span style='color: red'>Ошибка</span>" );
 					}
 				});
-			});
-
+			});  //$(document).delegate('#addnewbut', 'click', function(event) {
 
 
 			$(document).delegate('#delnum', 'click', function() {
 				if (confirm('Do you really want to delete record?')) {
-
 					$.ajax({
 						type: "DELETE",
 						url: "http://localhost:8080/bookkeeper/delete/" + delnumber.value,
 						cache: false,
 						success: function(result) {
-						/*
-							parent.fadeOut('slow', function() {
-								$(this).remove();
-							});
-							location.reload(true)
-						*/
-
 						$("#msg").html( "<span style='color: green'>Запись удалена</span>" );
 						window.setTimeout(function(){location.reload()},1000)
-
-
-
-
 						},
 						error: function(err) {
 						$("#msg").html( "<span style='color: red'>Ошибка</span>" );
@@ -167,9 +155,11 @@
 				}
 			});
 
-    	});
 
+
+        });  // end   $(document).ready(function()
 	</script>
+
 </head>
 <body>
 <div class="container">
