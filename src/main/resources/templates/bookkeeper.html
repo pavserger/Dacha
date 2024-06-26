@@ -86,12 +86,11 @@
 }
 	
 	
-	</style>
+    </style>
     <script type="text/javascript">
-        		$(document).ready(function() {
-        					$.getJSON('http://localhost:8080/bookkeeper/list', function(json) {
+        $(document).ready(function() {
+            $.getJSON('http://localhost:8080/bookkeeper/list', function(json) {
 
-			//	console.log (json);
 				var tr=[];
 
 				for (var i = 0; i < json.length; i++) {
@@ -108,9 +107,9 @@
 				$('#table1').append($(tr.join('')));
 			});
 
-				$(document).delegate('#addnewbut', 'click', function(event) {
+
+			$(document).delegate('#addnewbut', 'click', function(event) {
 				event.preventDefault();
-		//		alert ("save");
 				$.ajax({
 					type: "POST",
 					contentType: "application/json; charset=utf-8",
@@ -137,7 +136,38 @@
 
 
 
-        		});
+			$(document).delegate('#delnum', 'click', function() {
+				if (confirm('Do you really want to delete record?')) {
+
+					$.ajax({
+						type: "DELETE",
+						url: "http://localhost:8080/bookkeeper/delete/" + delnumber.value,
+						cache: false,
+						success: function(result) {
+						/*
+							parent.fadeOut('slow', function() {
+								$(this).remove();
+							});
+							location.reload(true)
+						*/
+
+						$("#msg").html( "<span style='color: green'>Запись удалена</span>" );
+						window.setTimeout(function(){location.reload()},1000)
+
+
+
+
+						},
+						error: function(err) {
+						$("#msg").html( "<span style='color: red'>Ошибка</span>" );
+							//$('#err').html('<span style=\'color:red; font-weight: bold; font-size: 30px;\'>Error deleting record').fadeIn().fadeOut(4000, function() {
+							//	$(this).remove();
+						}
+					});
+				}
+			});
+
+    	});
 
 	</script>
 </head>
@@ -246,6 +276,22 @@
         <input type="submit" id="addnewbut" value="Ok">
     </p>
 </form>
+<form id="delannualpay" action="#" class="add_form modal" style="display:none;">
+
+    <label>
+        <p>
+            Удалить участок с номером :
+            <input id="delnumber" type="number" value="0" />
+        </p>
+        <p>
+            <input type="submit" id="delnum" value="Ok">
+        </p>
+
+    </label>
+
+</form>
+
+
 
 
 </body>
