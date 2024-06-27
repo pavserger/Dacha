@@ -8,7 +8,6 @@ import com.example.dacha.model.RollesAndUsers.Landowner;
 import com.example.dacha.model.RollesAndUsers.LandownerRepository;
 import com.example.dacha.model.RollesAndUsers.Rolles;
 import com.example.dacha.model.RollesAndUsers.RollesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,12 +15,14 @@ import java.util.List;
 @Service
 public class CrudService {
 
-    @Autowired
+//    @Autowired
     private ParcelRepository crudRepository;
     private RollesRepository rollesRepository;
     private LandownerRepository landownerRepository;
     private AnnualPaymentRepository annualPaymentRepository;
 
+
+    private Landowner currentLandowner;
 
     public CrudService(ParcelRepository crudRepository,
                        RollesRepository rollesRepository,
@@ -52,8 +53,19 @@ public class CrudService {
     public void findOwnerAndParcel(Login login) {
          List<Landowner> listOwners =
         landownerRepository.findLandOwnersByPhoneAndPass(login.getPhone(), login.getPass());
-        listOwners.size();
+        try {
+            if (listOwners.size() == 1) {
+                currentLandowner = listOwners.get(0);
+            };
+
+        } catch(RuntimeException e) {
+            System.out.println("Could not login item ");
+        }
     }
+  //      if (listOwners.size() == 1) {
+  //          currentLandowner = listOwners.get(0);
+  //      };
+
 
     public void saveOrUpdateCompany(Parcel parcel) {
         crudRepository.save(parcel);
@@ -82,7 +94,6 @@ public class CrudService {
         landownerRepository.deleteById(id);
     }
 
-    // Annual Paayment
 
     public List<AnnualPayment> getAnnualPaymentList() {
         return annualPaymentRepository.findAll();
