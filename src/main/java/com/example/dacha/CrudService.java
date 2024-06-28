@@ -77,10 +77,6 @@ public class CrudService {
     }
 
 
-   // public void deleteCompany(Long id) {
-   //     crudRepository.deleteById(id);
-  //  }
-
     public void saveOrUpdateOwners(Landowner landowner) {
         landownerRepository.save(landowner);
 
@@ -93,7 +89,7 @@ public class CrudService {
     public void deleteOwner(Long id) {
         landownerRepository.deleteById(id);
     }
-
+//     -------------  AnnualPayment --------------------------
 
     public List<AnnualPayment> getAnnualPaymentList() {
         return annualPaymentRepository.findAll();
@@ -106,7 +102,10 @@ public class CrudService {
     public void deleteAnnualPayment(Long id) {
         annualPaymentRepository.deleteById(id);
     }
-
+    //     -------------  ParcelPayment --------------------------
+    public List<AnnualPayment> getParcelPaymentList() {
+        return annualPaymentRepository.findAnnualPaymentByParcel (currentLandowner.getParcel());
+    }
 
 
 }

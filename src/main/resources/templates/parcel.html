@@ -54,6 +54,30 @@
 	
 	</style>
     <script type="text/javascript">
+        $(document).ready(function() {
+             //   alert ("hi");
+
+
+            $.getJSON('http://localhost:8080/parcel/list', function(json) {
+				var tr=[];
+
+				for (var i = 0; i < json.length; i++) {
+					tr.push('<tr>');
+					tr.push('<td>' + json[i].id + '</td>');
+					tr.push('<td>' + json[i].lparcel + '</td>');
+					tr.push('<td>' + json[i].datenewpayment.substring(0, 10) + '</td>');
+					tr.push('<td>' + json[i].newpayment + '</td>');
+					tr.push('<td>' +json[i].datepayment.substring(0, 10)+'</td>');
+					tr.push('<td>' +json[i].payment+'</td>');
+					tr.push('<td>' +json[i].note+'</td>');
+					tr.push('</tr>');
+				}
+				$('#table1').append($(tr.join('')));
+			}); //  $.getJSON('http://localhost:8080/bookkeeper/list', function(json)
+
+         });  // end   $(document).ready(function()
+
+
 	</script>
 </head>
 <body>
@@ -72,10 +96,12 @@
 			</div>
             <div class="leftpane"><h2></h2>
 
-                <table border="1" cellspacing="0" cellpadding="2">
+
+                <table style='font-family:"Courier New", Courier, monospace; font-size:80%' id = "table1"  border="1" cellspacing="0"  cellpadding="2">
                     <caption>Ежегодные платежи</caption>
                     <tr>
                         <th>№</th>
+                        <th>Участок</th>
                         <th>Дата начисления</th>
                         <th>Сумма</th>
                         <th>Дата платежа</th>

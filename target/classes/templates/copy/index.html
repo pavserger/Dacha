@@ -58,11 +58,31 @@
 				$('table').append($(tr.join('')));
 			});
 
+			$(document).delegate('#idlogin', 'click', function(event) {
+				event.preventDefault();
+				$.ajax({
+					type: "POST",
+					contentType: "application/json; charset=utf-8",
+					url: "http://localhost:8080/parcel/login",
+					data: JSON.stringify({
+					"phone": phone.value,
+					"pass": pass.value,
+					}),
+					cache: false,
+					success: function(result) {
+						$("#msg").html( "<span style='color: green'>Вошли</span>" );
+						window.setTimeout(function(){location.reload()},1000)
+					},
+					error: function(err) {
+					 //   alert (data);
+						$("#msg").html( "<span style='color: red'>Не вошли</span>" );
+					}
+				});
+			});
+
+
 			$(document).delegate('#addNew', 'click', function(event) {
 				event.preventDefault();
-
-			//-	var name = $('#name').val();
-
 				$.ajax({
 					type: "POST",
 					contentType: "application/json; charset=utf-8",
@@ -86,12 +106,10 @@
 				});
 			});
 
+
+
 			$(document).delegate('#delnum', 'click', function() {
 				if (confirm('Do you really want to delete record?')) {
-
-				//alert (delnumber.value)
-				//	var id = $(this).attr(id.value);
-				//	var parent = $(this).parent().parent();
 
 					$.ajax({
 						type: "DELETE",
@@ -112,49 +130,14 @@
 				}
 			});
 
-			$(document).delegate('.edit', 'click', function() {
-				var parent = $(this).parent().parent();
-
-				var id = parent.children("td:nth-child(1)");
-				var name = parent.children("td:nth-child(2)");
-				var buttons = parent.children("td:nth-child(3)");
-
-				name.html("<input type='text' id='txtName' value='" + name.html() + "'/>");
-				buttons.html("<button id='save'>Save</button>&nbsp;&nbsp;<button class='delete' id='" + id.html() + "'>Delete</button>");
-			});
-
-			$(document).delegate('#save', 'click', function() {
-				var parent = $(this).parent().parent();
-
-				var id = parent.children("td:nth-child(1)");
-				var name = parent.children("td:nth-child(2)");
-				var buttons = parent.children("td:nth-child(3)");
-
-				$.ajax({
-					type: "POST",
-					contentType: "application/json; charset=utf-8",
-					url: "http://localhost:8080/company/save",
-					data: JSON.stringify({'id' : id.html(), 'name' : name.children("input[type=text]").val()}),
-					cache: false,
-					success: function() {
-						name.html(name.children("input[type=text]").val());
-						buttons.html("<button class='edit' id='" + id.html() + "'>Edit</button>&nbsp;&nbsp;<button class='delete' id='" + id.html() + "'>Delete</button>");
-					},
-					error: function() {
-						$('#err').html('<span style=\'color:red; font-weight: bold; font-size: 30px;\'>Error updating record').fadeIn().fadeOut(4000, function() {
-							$(this).remove();
-						});
-					}
-				});
-			});
-
 		});
 	</script>
 </head>
 <body>
 
 <h2>Список участков</h2>
-
+<p><a class='btn' href="#formlogin" rel="modal:open">Вход</a></p>
+<p><a class='btn' href="http://localhost:8080/bookkeeper"> Бухгалтер</a></p>
 <p><a class='btn' href="#add" rel="modal:open">Add New Cadastry</a></p>
 <p><a class='btn' href="#del" rel="modal:open">Delete Cadastry</a></p>
 <p><a class='btn' href="http://localhost:8080/owner"> Owners</a></p>
@@ -168,6 +151,27 @@
         <th>Заметки</th>
     </tr>
 </table>
+
+<form id="formlogin" action="#" class="add_form modal" style="display:none;">
+
+    <label>
+        <p>
+            Телефон :
+            <input id="phone" type="text" value="(905)544-27-44" />
+        </p>
+        <p>
+            Пароль :
+            <input id="pass" type="text" value="пароль" />
+        </p>
+        <p>
+            <input type="submit" id="idlogin" value="Ok">
+        </p>
+
+    </label>
+
+</form>
+
+
 
 
 <form id="del" action="#" class="add_form modal" style="display:none;">
