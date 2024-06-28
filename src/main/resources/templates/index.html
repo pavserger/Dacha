@@ -118,15 +118,19 @@
 						url: "http://localhost:8080/parcel/delete/" + delnumber.value,
 						cache: false,
 						success: function(result) {
-							parent.fadeOut('slow', function() {
-								$(this).remove();
-							});
-							location.reload(true)
+						//	parent.fadeOut('slow', function() {
+						//		$(this).remove();
+						//	});
+							alert("Удалили");
+							location.reload(true);
 						},
 						error: function(err) {
 							$('#err').html('<span style=\'color:red; font-weight: bold; font-size: 30px;\'>Error deleting record').fadeIn().fadeOut(4000, function() {
 								$(this).remove();
 							});
+							alert("Не удалили!!!");
+							location.reload(true);
+
 						}
 					});
 				}

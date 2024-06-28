@@ -71,11 +71,13 @@
 					cache: false,
 					success: function(result) {
 						$("#msg").html( "<span style='color: green'>Вошли</span>" );
-						window.setTimeout(function(){location.reload()},1000)
+						window.setTimeout(function(){location.reload()},1000);
+						alert ("Вошли");
 					},
 					error: function(err) {
 					 //   alert (data);
 						$("#msg").html( "<span style='color: red'>Не вошли</span>" );
+						alert ("Не вошли !!!");
 					}
 				});
 			});
@@ -116,15 +118,19 @@
 						url: "http://localhost:8080/parcel/delete/" + delnumber.value,
 						cache: false,
 						success: function(result) {
-							parent.fadeOut('slow', function() {
-								$(this).remove();
-							});
-							location.reload(true)
+						//	parent.fadeOut('slow', function() {
+						//		$(this).remove();
+						//	});
+							alert("Удалили");
+							location.reload(true);
 						},
 						error: function(err) {
 							$('#err').html('<span style=\'color:red; font-weight: bold; font-size: 30px;\'>Error deleting record').fadeIn().fadeOut(4000, function() {
 								$(this).remove();
 							});
+							alert("Не удалили!!!");
+							location.reload(true);
+
 						}
 					});
 				}
@@ -138,6 +144,8 @@
 <h2>Список участков</h2>
 <p><a class='btn' href="#formlogin" rel="modal:open">Вход</a></p>
 <p><a class='btn' href="http://localhost:8080/bookkeeper"> Бухгалтер</a></p>
+<p><a class='btn' href="http://localhost:8080/parcel"> Сведентя об участке</a></p>
+
 <p><a class='btn' href="#add" rel="modal:open">Add New Cadastry</a></p>
 <p><a class='btn' href="#del" rel="modal:open">Delete Cadastry</a></p>
 <p><a class='btn' href="http://localhost:8080/owner"> Owners</a></p>
