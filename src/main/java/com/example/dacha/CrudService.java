@@ -50,17 +50,15 @@ public class CrudService {
         return crudRepository.findById(id).get();
     }
 
-    public void findOwnerAndParcel(Login login) {
+    public String findOwnerAndParcel(Login login) {
+
          List<Landowner> listOwners =
         landownerRepository.findLandOwnersByPhoneAndPass(login.getPhone(), login.getPass());
-        try {
             if (listOwners.size() == 1) {
                 currentLandowner = listOwners.get(0);
+                return "OK";
             };
-
-        } catch(RuntimeException e) {
-            System.out.println("Could not login item ");
-        }
+            return "NOT_FOUND";
     }
   //      if (listOwners.size() == 1) {
   //          currentLandowner = listOwners.get(0);
