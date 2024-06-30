@@ -8,6 +8,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <style>
+.leftpane{
+    width: 30%;
+    height: available;
+    float: left;
+  //  background: #4da6ff;
+    border-collapse: collapse;
+}
+.rightpane{
+    width:    available;
+    height: available;
+  //  margin-left: 75%;
+    float: left;
+  //  background-color: yellow;
+    border-collapse: collapse;
+}
+.toppane{
+    width: available;
+    height: 30px;
+    border-collapse: collapse;
+ //   background-color: #4da6ff;
+}
+
+
 		.modal p { margin: 1em 0; }
 
 		.add_form.modal {
@@ -141,16 +164,26 @@
 </head>
 <body>
 
-<h2>Список участков</h2>
-<p><a class='btn' href="#formlogin" rel="modal:open">Вход</a></p>
-<p><a class='btn' href="http://localhost:8080/bookkeeper"> Бухгалтер</a></p>
-<p><a class='btn' href="http://localhost:8080/parcel"> Сведентя об участке</a></p>
+<div class="toppane">
+    <h3>Загрузочная страница</h3>
+</div>
 
-<p><a class='btn' href="#add" rel="modal:open">Add New Cadastry</a></p>
-<p><a class='btn' href="#del" rel="modal:open">Delete Cadastry</a></p>
-<p><a class='btn' href="http://localhost:8080/owner"> Owners</a></p>
+<div class="leftpane"><h2></h2>
 
-<table border="1" cellspacing="0" cellpadding="5">
+    <p><a class='btn' href="#formlogin" rel="modal:open">Вход</a></p>
+    <p><a class='btn' href="http://localhost:8080/bookkeeper"> Бухгалтер</a></p>
+    <p><a class='btn' href="http://localhost:8080/parcel"> Сведентя об участке</a></p>
+
+    <p><a class='btn' href="#add" rel="modal:open">Новый участк</a></p>
+    <p><a class='btn' href="#del" rel="modal:open">Удалить участок</a></p>
+    <p><a class='btn' href="http://localhost:8080/owner"> Собственники</a></p>
+</div>
+
+<div class="rightpane"><h2></h2>
+
+    <h3>Список участков</h3>
+
+    <table style='font-family:"Courier New", Courier, monospace; font-size:80%' id = "table1"  border="1" cellspacing="0"  cellpadding="2">
     <tr>
         <th>Id</th>
         <th>Cadastr</th>
@@ -159,6 +192,10 @@
         <th>Заметки</th>
     </tr>
 </table>
+
+
+</div>
+
 
 <form id="formlogin" action="#" class="add_form modal" style="display:none;">
 

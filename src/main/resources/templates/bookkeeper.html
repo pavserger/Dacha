@@ -143,11 +143,14 @@
 						url: "http://localhost:8080/bookkeeper/delete/" + delnumber.value,
 						cache: false,
 						success: function(result) {
+						alert ("Запись удалена");
+
 						$("#msg").html( "<span style='color: green'>Запись удалена</span>" );
-						window.setTimeout(function(){location.reload()},1000)
+						window.setTimeout(function(){location.reload()},1000);
 						},
 						error: function(err) {
 						$("#msg").html( "<span style='color: red'>Ошибка</span>" );
+						alert ("Ошибка");
 							//$('#err').html('<span style=\'color:red; font-weight: bold; font-size: 30px;\'>Error deleting record').fadeIn().fadeOut(4000, function() {
 							//	$(this).remove();
 						}
@@ -184,10 +187,14 @@
                     </tr>
                 </table>
 
-                <p>
-                    <a class='btn' href="#addannualpay" rel="modal:open">Новый платеж     </a>
-                    <a class='btn' href="#delannualpay" rel="modal:open">Удалить платеж</a>
-                </p>
+                <table style='font-family:"Courier New", Courier, monospace; font-size:100%' id = "tablePage"  border="0" cellspacing="0"  cellpadding="2">
+                    <caption>Комнды</caption>
+                    <tr>
+                        <th><a class='btn' href="#addannualpay" rel="modal:open">Новый платеж     </a></th>
+                        <th><a class='btn' href="#delannualpay" rel="modal:open">Удалить платеж</a></th>
+                    </tr>
+                </table>
+
 
                 <p>                                                            </p>
 
@@ -270,7 +277,7 @@
 
     <label>
         <p>
-            Удалить участок с номером :
+            Удалить платеж с номером :
             <input id="delnumber" type="number" value="0" />
         </p>
         <p>
