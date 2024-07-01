@@ -11,12 +11,19 @@ import javax.persistence.Id;
 //@NoArgsConstructor
 
 @Data
-public class Rolles
+public class Staff
     {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long idrole;
+        private String family;
         private String name;
+        private String lasName;
+        private String phone;
+        private String post;
+        private String pass;
+        private String staffName;
+        private String brief;
 
     }
 

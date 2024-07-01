@@ -43,13 +43,19 @@
 	</style>
     <script type="text/javascript">
 		$(document).ready(function() {
-			$.getJSON('http://localhost:8080/rolesList', function(json) {
+			$.getJSON('http://localhost:8080/staff', function(json) {
 				var tr=[];
 
 				for (var i = 0; i < json.length; i++) {
 					tr.push('<tr>');
 					tr.push('<td>' + json[i].idrole + '</td>');
+					tr.push('<td>' + json[i].family + '</td>');
 					tr.push('<td>' + json[i].name + '</td>');
+					tr.push('<td>' + json[i].lasName + '</td>');
+					tr.push('<td>' + json[i].phone + '</td>');
+					tr.push('<td>' + json[i].pass + '</td>');
+					tr.push('<td>' + json[i].staffName + '</td>');
+					tr.push('<td>' + json[i].brief + '</td>');
 					tr.push('</tr>');
 				}
 				$('table').append($(tr.join('')));
@@ -68,7 +74,14 @@
 					url: "http://localhost:8080/roles/save",
 					data: JSON.stringify({
 					"idrole":33,
-					"name": $('#nameRolle').val()
+					"family": family.value,
+					"name": name2.value,
+			    	"lasName":lasname.value,
+					"phone":phone.value,
+					"post":post.value,
+					"pass":pass.value
+					"staffName": $('#staffName').val()
+					"brief": $('#brief').val()
 					}),
 					cache: false,
 					success: function(result) {
@@ -150,13 +163,18 @@
 
 <h2>Роли </h2>
 
-<p><a class='btn' href="#add" rel="modal:open">Add New Role </a></p>
+<p><a class='btn' href="#add" rel="modal:open">Новый сотрудник </a></p>
 
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
         <th>№</th>
-        <th>Наименование</th>
-
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Телефон</th>
+        <th>Почта </th>
+        <th>Роль</th>
+        <th>Пароль</th>
     </tr>
 </table>
 
@@ -166,6 +184,40 @@
     <p>
         <label>Наименование</label>
         <input type="text" id="nameRolle" value="name">
+    </p>
+
+    <p>
+        <label>Фамилия</label>
+        <input type="text" id="family" name="Иванов">
+    </p>
+    <p>
+        <label>Имя</label>
+        <input type="text" id="name2" name="Иван">
+    </p>
+    <p>
+        <label>Отчество</label>
+        <input type="text" id="lasname" name="Иванович">
+    </p>
+    <p>
+        <label>Телефон</label>
+        <input type="text" id="phone" name="322-22-33">
+    </p>
+    <p>
+        <label>Почта</label>
+        <input type="text" id="post" name="name@yandex.ru">
+    </p>
+    <p>
+        <label>Пароль</label>
+        <input type="text" id="pass" name="????????">
+    </p>
+
+    <p>
+        <label>Пароль</label>
+        <input type="text" id="staffName" name="????????">
+    </p>
+    <p>
+        <label>Пароль</label>
+        <input type="text" id="brief" name="prd">
     </p>
 
     <p>

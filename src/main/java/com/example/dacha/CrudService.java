@@ -6,8 +6,8 @@ import com.example.dacha.model.PaysAndJobs.AnnualPayment;
 import com.example.dacha.model.PaysAndJobs.AnnualPaymentRepository;
 import com.example.dacha.model.RollesAndUsers.Landowner;
 import com.example.dacha.model.RollesAndUsers.LandownerRepository;
-import com.example.dacha.model.RollesAndUsers.Rolles;
-import com.example.dacha.model.RollesAndUsers.RollesRepository;
+import com.example.dacha.model.RollesAndUsers.Staff;
+import com.example.dacha.model.RollesAndUsers.StaffRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,21 +17,24 @@ public class CrudService {
 
 //    @Autowired
     private ParcelRepository crudRepository;
-    private RollesRepository rollesRepository;
+    private StaffRepository rollesRepository;
     private LandownerRepository landownerRepository;
     private AnnualPaymentRepository annualPaymentRepository;
+    private StaffRepository staffRepository;
 
 
     private Landowner currentLandowner;
 
     public CrudService(ParcelRepository crudRepository,
-                       RollesRepository rollesRepository,
+                       StaffRepository rollesRepository,
                        LandownerRepository landownerRepository,
+                       StaffRepository staffRepository,
                        AnnualPaymentRepository annualPaymentRepository
     ) {
         this.crudRepository = crudRepository;
         this.rollesRepository = rollesRepository;
         this.landownerRepository = landownerRepository;
+        this.staffRepository = staffRepository;
         this.annualPaymentRepository = annualPaymentRepository;
 
     }
@@ -41,7 +44,7 @@ public class CrudService {
     }
 
 
-    public List<Rolles> getRollesList() {
+    public List<Staff> getRollesList() {
         return rollesRepository.findAll();
     }
 
@@ -68,7 +71,7 @@ public class CrudService {
     public void saveOrUpdateCompany(Parcel parcel) {
         crudRepository.save(parcel);
     }
-    public void saveOrUpdateRoles(Rolles rolles) { rollesRepository.save(rolles);
+    public void saveOrUpdateRoles(Staff rolles) { rollesRepository.save(rolles);
     }
     public void deleteParcel(Long id) {
         crudRepository.deleteById(id);
@@ -105,5 +108,13 @@ public class CrudService {
         return annualPaymentRepository.findAnnualPaymentByParcel (currentLandowner.getParcel());
     }
 
+    //     -------------  Staff --------------------------
+    public List<Staff> getStaffList() {
+        return staffRepository.findAll();
+    }
+
+    public void saveOrUpdateStaff(Staff staff) {
+        staffRepository.save(staff);
+    }
 
 }

@@ -2,11 +2,8 @@ package com.example.dacha.controllers;
 
 import com.example.dacha.CrudService;
 import com.example.dacha.model.Parcel;
-import com.example.dacha.model.ParcelRepository;
 import com.example.dacha.model.RollesAndUsers.Landowner;
 import com.example.dacha.model.RollesAndUsers.LandownerRepository;
-import com.example.dacha.model.RollesAndUsers.Rolles;
-import com.example.dacha.model.RollesAndUsers.RollesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
