@@ -24,6 +24,7 @@ public class CrudService {
 
 
     private Landowner currentLandowner;
+    private Staff currentStaff;
 
     public CrudService(ParcelRepository crudRepository,
                        StaffRepository rollesRepository,
@@ -57,10 +58,14 @@ public class CrudService {
 
          List<Landowner> listOwners =
         landownerRepository.findLandOwnersByPhoneAndPass(login.getPhone(), login.getPass());
-            if (listOwners.size() == 1) {
+         List <Staff> staffList = staffRepository.findStaffByPhoneAndPass(login.getPhone(), login.getPass());
+            if (listOwners.size() == 1)  {
                 currentLandowner = listOwners.get(0);
-                return "OK";
+             //   return "OK";
             };
+            if (staffList.size()==1) {currentStaff = staffList.get(0);};
+
+            if ((currentLandowner != null) || (staffList!=null)) {return "OK";}
             return "NOT_FOUND";
     }
   //      if (listOwners.size() == 1) {
@@ -84,6 +89,7 @@ public class CrudService {
     }
     public List<Landowner> getOwnersList() {
         var list = landownerRepository.findAll();
+
         return landownerRepository.findAll();
     }
 
