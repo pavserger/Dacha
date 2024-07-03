@@ -89,8 +89,12 @@ public class CrudService {
     }
     public List<Landowner> getOwnersList() {
         var list = landownerRepository.findAll();
-
-        return landownerRepository.findAll();
+        if (currentStaff == null) {
+            for (int i = 0; i < list.size(); i++) {
+                list.get(i).setPass("???");
+            };
+        };
+        return list;
     }
 
     public void deleteOwner(Long id) {
