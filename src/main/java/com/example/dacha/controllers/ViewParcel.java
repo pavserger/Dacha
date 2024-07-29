@@ -78,11 +78,14 @@ public class ViewParcel {
 
     public @ResponseBody byte[] getImage() throws IOException {
 
- //       OutputStream os = new FileOutputStream("output.txt");
- //       os.write(65);
-  //      InputStream in = getClass()
-  //              .getResourceAsStream("dacha2.PNG");
-        InputStream fileSystemStream = new FileInputStream("dacha2.PNG");
+        //  OutputStream os = new FileOutputStream("../image/output.txt");
+      //  os.write(65);
+
+      //  System.out.println("Working Directory = " + System.getProperty("user.dir"));
+     //   InputStream in = getClass()
+       //         .getResourceAsStream("dacha2.PNG");
+
+        InputStream fileSystemStream = new FileInputStream(System.getProperty("user.dir")+"/image/dacha2.PNG");
         return IOUtils.toByteArray(fileSystemStream);
     }
 
