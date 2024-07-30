@@ -36,7 +36,10 @@ public class ViewParcel {
     @GetMapping("viewparcel/img/{id}")
 
     public @ResponseBody byte[] getImage(@PathVariable Long id) throws IOException {
-        String dacha = "dacha"+ id.toString()+".PNG";
+        String dacha = "/image/dacha"+ id.toString()+".PNG";
+        String p = System.getProperty("user.dir");
+        String p2 = p + dacha;
+
         InputStream fileSystemStream = new FileInputStream(System.getProperty("user.dir")+dacha);
         return IOUtils.toByteArray(fileSystemStream);
     }

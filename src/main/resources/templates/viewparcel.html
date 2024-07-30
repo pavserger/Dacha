@@ -5,10 +5,8 @@
 <label>
     <p>
         Посмотреть участок с номером :
-        <input id="patcelnumber" type="number" value="3" />
-    </p>
-    <p>
-        <input type="submit" id="parcelnum" value="Ok">
+        <input id="parcelnumber" type="number" value="2"/>
+        <input type="submit" id="parcelnum" value="Ok"/>
     </p>
 
 </label>
@@ -27,19 +25,59 @@
     where the image will be displayed -->
 <div id="imageContainer"></div>
 
-<script>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+<script type="text/javascript">
+		$(document).ready(function() {
+              //  console.log("http://localhost:8080/viewparcel/img/"+parcelnumber.value);
+
+			$(document).delegate('#parcelnum', 'click', function() {
+                 const imageContainer = document
+                 .getElementById("imageContainer");
+                 console.log("http://localhost:8080/viewparcel/img/"+parcelnumber.value);
+                 imageContainer.innerHTML =
+                  `<img src=
+                    url : "http://localhost:8080/viewparcel/img/"+parcelnumber.value>`;
+            });
+		});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//<script>
 
 
 
         // You can dynamically set the innerHTML
         // of a container to include an image element
         const imageContainer = document
-        .getElementById("imageContainer");
-        imageContainer.innerHTML =
-          `<img src=
-            "http://localhost:8080/viewparcel/img/+patcelnumber.value">`;
+  //      .getElementById("imageContainer");
+    //    imageContainer.innerHTML =
+    //      `<img src=
+    //        "http://localhost:8080/viewparcel/img/+patcelnumber.value">`;
 
-</script>
+//</script>
 
 </body>
 
