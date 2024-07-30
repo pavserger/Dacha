@@ -2,6 +2,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<label>
+    <p>
+        Посмотреть участок с номером :
+        <input id="patcelnumber" type="number" value="3" />
+    </p>
+    <p>
+        <input type="submit" id="parcelnum" value="Ok">
+    </p>
+
+</label>
 
 <head>
     <meta charset="UTF-8">
@@ -18,13 +28,16 @@
 <div id="imageContainer"></div>
 
 <script>
+
+
+
         // You can dynamically set the innerHTML
         // of a container to include an image element
         const imageContainer = document
         .getElementById("imageContainer");
         imageContainer.innerHTML =
           `<img src=
-            "http://localhost:8080/viewparcel/img">`;
+            "http://localhost:8080/viewparcel/img/+patcelnumber.value">`;
 
 </script>
 

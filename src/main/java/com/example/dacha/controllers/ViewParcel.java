@@ -12,10 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 //import org.apache.commons.compress.utils.IOUtils;
 
 import java.io.*;
@@ -36,56 +33,11 @@ public class ViewParcel {
 
         return "viewparcel";
     }
-    /*
-    @GetMapping(value = "/image")
-    public @ResponseBody byte[] getImage() throws IOException {
-        InputStream in = getClass()
-                .getResourceAsStream("/com/baeldung/produceimage/image.jpg").;
-    //    ByteArrayOutputStream IOUtils = null;
-     //   return IOUtils.toByteArray(in);
-        return in;
+    @GetMapping("viewparcel/img/{id}")
 
-    }
-
-     */
-    @GetMapping("viewparcel/img")
-   // @ResponseBody
-    /*
-    public ResponseEntity<InputStreamResource> getImageDynamicType(@RequestParam("jpg") boolean jpg) {
-        //public ResponseEntity<InputStreamResource> getImageDynamicType(@RequestParam("jpg") boolean jpg) {
-        MediaType contentType = jpg ? MediaType.IMAGE_JPEG : MediaType.IMAGE_PNG;
-        InputStream in = jpg ?
-                getClass().getResourceAsStream("dacha2.png") :
-                getClass().getResourceAsStream("dacha2.jpg");
-        return ResponseEntity.ok()
-                .contentType(contentType)
-                .body(new InputStreamResource(in));
-    }
-
-
-
-
-     */
-/*
-    public ResponseEntity<InputStreamResource> getImageDynamicType() {
-        //public ResponseEntity<InputStreamResource> getImageDynamicType(@RequestParam("jpg") boolean jpg) {
-      //  MediaType contentType = jpg ? MediaType.IMAGE_JPEG : MediaType.IMAGE_PNG;
-        InputStream in = getClass().getResourceAsStream("dacha2.png");
-        return new ResponseEntity<InputStreamResource>((MultiValueMap<String, String>) in, HttpStatus.OK);
-
-    }
-*/
-
-    public @ResponseBody byte[] getImage() throws IOException {
-
-        //  OutputStream os = new FileOutputStream("../image/output.txt");
-      //  os.write(65);
-
-      //  System.out.println("Working Directory = " + System.getProperty("user.dir"));
-     //   InputStream in = getClass()
-       //         .getResourceAsStream("dacha2.PNG");
-
-        InputStream fileSystemStream = new FileInputStream(System.getProperty("user.dir")+"/image/dacha2.PNG");
+    public @ResponseBody byte[] getImage(@PathVariable Long id) throws IOException {
+        String dacha = "dacha"+ id.toString()+".PNG";
+        InputStream fileSystemStream = new FileInputStream(System.getProperty("user.dir")+dacha);
         return IOUtils.toByteArray(fileSystemStream);
     }
 
