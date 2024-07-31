@@ -33,15 +33,35 @@
 
 <script type="text/javascript">
 		$(document).ready(function() {
-              //  console.log("http://localhost:8080/viewparcel/img/"+parcelnumber.value);
+              //  console.log("http://localhost:8080/viewparcel/img/"+parcelnumber);
+			$(document).delegate('#parcelnumber', 'click', function() {
+					$.ajax({
+						type: "POST",
+					//	console.log("http://localhost:8080/viewparcel/img/"+parcelnumber);
+						url: "http://localhost:8080/viewparcel/img/"+parcelnumber,
+						cache: false,
+						success: function() {
+							parent.fadeOut('slow', function() {
+								$(this).remove();
+							});
+							location.reload(true)
+						},
+						error: function() {
+							$('#err').html('<span style=\'color:red; font-weight: bold; font-size: 30px;\'>Error deleting record').fadeIn().fadeOut(4000, function() {
+								$(this).remove();
+							});
+						}
+					});
+
+            });
 
 			$(document).delegate('#parcelnum', 'click', function() {
                  const imageContainer = document
                  .getElementById("imageContainer");
-                 console.log("http://localhost:8080/viewparcel/img/"+parcelnumber.value);
+               //  console.log("http://localhost:8080/viewparcel/img");
                  imageContainer.innerHTML =
                   `<img src=
-                    url : "http://localhost:8080/viewparcel/img/"+parcelnumber.value>`;
+                    "http://localhost:8080/viewparcel/img">`;
             });
 		});
 </script>
