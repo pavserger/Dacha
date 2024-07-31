@@ -35,11 +35,11 @@ public class ViewParcel {
 
         return "viewparcel";
     }
-    @PostMapping("viewparcel/img/{id}")
+    @PostMapping("/viewparcel/img/{id}")
 
-    public  String postNumImage(@PathVariable Long id) throws IOException {
+    public  ResponseEntity<Void> postNumImage(@PathVariable Long id) throws IOException {
         idParcel = id;
-        return "Ok";
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
     @GetMapping("viewparcel/img")
 

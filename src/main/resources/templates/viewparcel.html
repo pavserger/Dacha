@@ -35,10 +35,13 @@
 		$(document).ready(function() {
               //  console.log("http://localhost:8080/viewparcel/img/"+parcelnumber);
 			$(document).delegate('#parcelnumber', 'click', function() {
+
+
+					console.log("http://localhost:8080/viewparcel/img/"+parcelnumber.value);
+
 					$.ajax({
 						type: "POST",
-					//	console.log("http://localhost:8080/viewparcel/img/"+parcelnumber);
-						url: "http://localhost:8080/viewparcel/img/"+parcelnumber,
+						url: "http://localhost:8080/viewparcel/img/"+parcelnumber.value,
 						cache: false,
 						success: function() {
 							parent.fadeOut('slow', function() {
