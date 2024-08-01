@@ -6,7 +6,8 @@
     <p>
         Посмотреть участок с номером :
         <input id="parcelnumber" type="number" value="2"/>
-        <input type="submit" id="parcelnum" value="Ok"/>
+        <input type="submit" id="selectparcel" value="Выбор"/>
+        <input type="submit" id="parcelnum" value="Отображение"/>
     </p>
 
 </label>
@@ -34,7 +35,7 @@
 <script type="text/javascript">
 		$(document).ready(function() {
               //  console.log("http://localhost:8080/viewparcel/img/"+parcelnumber);
-			$(document).delegate('#parcelnumber', 'click', function() {
+			$(document).delegate('#selectparcel', 'click', function() {
 
 
 					console.log("http://localhost:8080/viewparcel/img/"+parcelnumber.value);
