@@ -25,7 +25,7 @@ public class ViewParcel {
     private CrudService crudService;
     private ParcelRepository parcelRepository;
 
-    public long idParcel = 1;
+    public String viewParcel = "dacha1";
     public ViewParcel(ParcelRepository parcelRepository) {
         this.parcelRepository = parcelRepository;
     }
@@ -38,13 +38,14 @@ public class ViewParcel {
     @PostMapping("/viewparcel/img/{id}")
 
     public  ResponseEntity<Void> postNumImage(@PathVariable Long id) throws IOException {
-        idParcel = id;
+        //idParcel = id;
+        viewParcel = crudService.getParcelById(id).getView();
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
     @GetMapping("viewparcel/img")
 
     public @ResponseBody byte[] getImage() throws IOException {
-        String dacha = "/image/dacha"+ idParcel+".PNG";
+        String dacha = "/image/"+ viewParcel;
         String p = System.getProperty("user.dir");
         String p2 = p + dacha;
 

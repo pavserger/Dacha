@@ -83,6 +83,8 @@ public class CrudService {
     }
 
 
+
+
     public void saveOrUpdateOwners(Landowner landowner) {
         landownerRepository.save(landowner);
 
